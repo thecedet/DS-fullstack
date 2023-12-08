@@ -55,6 +55,14 @@ public class RestaurantEntity {
     )
     private List<TagEntity> tags;
 
+    @Column(
+        name = "image",
+        columnDefinition = "boolean",
+        nullable = true
+    )
+    private Boolean image = false;
+
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "evaluationFinale_id", referencedColumnName = "id", nullable = true)
     private EvaluationFinaleEntity evaluationFinaleEntity;

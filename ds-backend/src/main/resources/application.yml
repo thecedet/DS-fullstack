@@ -16,6 +16,5 @@ s3:
     secretkey: "NOibQ7qdGlMyEypU286w5H3NbnIZVqWslfoh2SJe"
     endpoint: "http://127.0.0.1:9000/"
     bucketName:
-        cover: "exocover"
-        screenshot: "exoscreenshot"
-        acteur: "exoacteur"
+        examillustrations: "examillustrations"
+        examphotos: "examphotos"

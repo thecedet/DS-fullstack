@@ -1,0 +1,15 @@
+<table id="customers">
+    <tr>
+      <th>Nom</th>
+      <th>Note</th>
+      <th>date_creation</th>
+      <th>date_mise_a_jour</th>
+    </tr>
+
+    <tr *ngFor="let evaluation of evaluations">
+        <td>{{ evaluation.nom }}</td>
+        <td>{{ evaluation.note }}</td>
+        <td>{{ evaluation.date_creation }}</td>
+        <td>{{ evaluation.date_mise_a_jour }}</td>
+    </tr>
+  </table>

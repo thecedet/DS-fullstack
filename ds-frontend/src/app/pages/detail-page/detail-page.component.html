@@ -1,0 +1,11 @@
+<h1>{{ restaurant?.nom }}</h1>
+<p>addresse : {{ restaurant?.addresse }}</p>
+<app-image [image]="image" (uploadImage)="uploadImage($event)"></app-image>
+<h2>Evaluation</h2>
+
+<app-eval-list [evaluations]="restaurant?.evaluations" ></app-eval-list>
+<app-eval-form [evaluation]="evaluation" (create)="uploadEvaluation($event)"></app-eval-form>
+
+<h2>Editer restaurant</h2>
+
+<app-resto-form [tags]="tags" [restaurant]="restaurantUpdate" (updateActeur)="updateRestaurant($event)"></app-resto-form>

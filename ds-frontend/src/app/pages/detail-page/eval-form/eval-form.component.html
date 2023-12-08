@@ -1,0 +1,27 @@
+<form #form="ngForm" (ngSubmit)="submit(form)" *ngIf="evaluation !== undefined">
+    <div>
+        <label for="nom">Nom&nbsp;:</label>
+        <input id="nom" type="text" name="nom" #nom="ngModel" [(ngModel)]="evaluation.nom" maxlength="50" required>
+        <span style="color:#e74c3c" *ngIf="!nom.valid && nom.errors?.['required'] && nom.dirty">Le champs est requis</span>
+        <span style="color:#e74c3c" *ngIf="!nom.valid && nom.errors?.['maxlength'] && nom.dirty">Le champs est trop long</span>
+    </div>
+    <div>
+      <label for="note">note&nbsp;:</label>
+      <input id="note" type="text" name="note" #note="ngModel" [(ngModel)]="evaluation.note" maxlength="50" required>
+      <span style="color:#e74c3c" *ngIf="!note.valid && note.errors?.['required'] && note.dirty">Le champs est requis</span>
+      <span style="color:#e74c3c" *ngIf="!note.valid && note.errors?.['maxlength'] && note.dirty">Le champs est trop long</span>
+    </div>
+    <div>
+        <label for="commentaire">commentaire&nbsp;:</label>
+        <input id="commentaire" type="text" name="commentaire" #commentaire="ngModel" [(ngModel)]="evaluation.commentaire" maxlength="50" required>
+        <span style="color:#e74c3c" *ngIf="!commentaire.valid && commentaire.errors?.['required'] && commentaire.dirty">Le champs est requis</span>
+        <span style="color:#e74c3c" *ngIf="!commentaire.valid && commentaire.errors?.['maxlength'] && commentaire.dirty">Le champs est trop long</span>
+    </div>
+    <div>
+        <label for="date">date&nbsp;:</label>
+        <input id="date" type="date" name="date" #date="ngModel" [(ngModel)]="evaluation.date" maxlength="50" required>
+        <span style="color:#e74c3c" *ngIf="!date.valid && date.errors?.['required'] && date.dirty">Le champs est requis</span>
+        <span style="color:#e74c3c" *ngIf="!date.valid && date.errors?.['maxlength'] && date.dirty">Le champs est trop long</span>
+      </div>
+    <input type="submit" value="Valider" [disabled]="!(note.valid && nom.valid && nom.valid)" />
+</form>

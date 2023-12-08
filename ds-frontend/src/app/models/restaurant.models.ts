@@ -28,5 +28,6 @@ export interface IRestaurantCreate {
 
 export interface IRestaurantUpdate {
     nom?: string,
-    addresse?: string
+    addresse?: string,
+    tags?: ITag[]
 }

@@ -3,6 +3,7 @@ package fr.polytech.dsbackend.service;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import fr.polytech.dsbackend.dto.request.RestaurantCreateDto;
@@ -18,6 +19,12 @@ import lombok.AllArgsConstructor;
 public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
+
+    private final S3Service s3Service;
+
+    @Value("${s3.bucketName.examillustrations}")
+    public final String examillustrations = null;
+
 
     public List<RestaurantEntity> getRestaurants() {
         return this.restaurantRepository.findAll();
@@ -63,6 +70,23 @@ public class RestaurantService {
         entity.setTags(tags);
         this.restaurantRepository.save(entity);
         return entity;
+    }
+
+    public String getImage(Integer id) {
+        RestaurantEntity acteur = this.getRestaurant(id);
+
+        if(!acteur.getImage()) {
+            throw new ResourceNotFoundException("L'acteur n'a pas d'image");
+        }
+
+        return s3Service.getImageUrl(id, examillustrations);
+    }
+
+    public String putImage(Integer id) {
+        RestaurantEntity acteur = this.getRestaurant(id);
+        acteur.setImage(true);
+        restaurantRepository.save(acteur);
+        return s3Service.putImageUrl(id, examillustrations);
     }
 
 }

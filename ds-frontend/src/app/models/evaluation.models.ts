@@ -8,14 +8,14 @@ export interface IEvaluation {
 }
 
 export interface IEvaluationUpdate {
-    nom?: number,
+    nom?: string,
     commentaire?: string,
     note?: number,
     date?: Date
 }
 
 export interface IEvaluationCreate {
-    nom: number,
+    nom: string,
     commentaire: string,
     note: number,
     date: Date

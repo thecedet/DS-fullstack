@@ -65,5 +65,21 @@ public class RestaurantController {
     public @ResponseBody RestaurantDto addTag(@PathVariable Integer id, @RequestParam(value = "tag") ArrayList<TagEntity> tags) {
         return RestaurantDto.convertEntitytoDto(this.restaurantService.addTags(id, tags));
     }
+
+    @PutMapping("/restaurants/{id}/image")
+    public @ResponseBody MessageDto putImage(@PathVariable Integer id) {
+        return MessageDto.builder()
+            .code("GET_IMAGE_URL")
+            .message(this.restaurantService.putImage(id))
+            .build();
+    }
+
+    @GetMapping("/restaurants/{id}/image")
+    public @ResponseBody MessageDto getImage(@PathVariable Integer id) {
+        return MessageDto.builder()
+            .code("GET_IMAGE_URL")
+            .message(this.restaurantService.getImage(id))
+            .build();
+    }
     
 }

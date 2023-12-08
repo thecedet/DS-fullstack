@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 import { RestaurantTableComponent } from "./restaurant-table/restaurant-table.component";
-import { RestaurantFormComponent } from "./restaurant-form/restaurant-form.component";
-import { IRestaurantCreate, IRestaurantSummary, IRestaurant } from '../../models/restaurant.models';
+import { IRestaurantCreate, IRestaurantSummary} from '../../models/restaurant.models';
 import { RestaurantService } from '../../services/restaurant.service';
 import { NotificationService } from '../../services/notification.service';
 import { ITag } from '../../models/tag.models';
 import { TagService } from '../../services/tag.service';
 import { Observable } from 'rxjs';
+import { RestoFormComponent } from "../../components/resto-form/resto-form.component";
+import { RestaurantFormComponent } from "./restaurant-form/restaurant-form.component";
 
 @Component({
     selector: 'app-home-page',
     standalone: true,
     templateUrl: './home-page.component.html',
     styleUrl: './home-page.component.css',
-    imports: [RestaurantTableComponent, RestaurantFormComponent]
+    imports: [RestaurantTableComponent, RestoFormComponent, RestaurantFormComponent]
 })
 export class HomePageComponent {
 

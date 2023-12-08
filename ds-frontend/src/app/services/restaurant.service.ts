@@ -4,6 +4,7 @@ import { Observable, catchError, mergeMap, of } from 'rxjs';
 import { IRestaurant, IRestaurantCreate, IRestaurantSummary, IRestaurantUpdate } from '../models/restaurant.models';
 import { IMessage } from '../models/message.models';
 import { ITag } from '../models/tag.models';
+import { IEvaluationCreate } from '../models/evaluation.models';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,10 @@ export class RestaurantService {
     params.tag = tags.map(tag => tag.nom)
     return this.httpClient.put<IRestaurant>(`${this.baseURL}/${id}/tags`, {}, {params})
   }
+
+  public createEvaluation(id : string, evaluation : IEvaluationCreate) : Observable<IRestaurant> {
+    return this.httpClient.post<IRestaurant>(`${this.baseURL}/${id}/evaluations`, evaluation);
+  }
+  
 
 }
