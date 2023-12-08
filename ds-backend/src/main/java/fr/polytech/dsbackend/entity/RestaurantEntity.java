@@ -58,9 +58,9 @@ public class RestaurantEntity {
     @Column(
         name = "image",
         columnDefinition = "boolean",
-        nullable = true
+        nullable = false
     )
-    private Boolean image = false;
+    private Boolean image;
 
 
     @OneToOne(cascade = CascadeType.ALL)

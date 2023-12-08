@@ -42,6 +42,7 @@ public class RestaurantService {
             .addresse(restaurant.getAddresse())
             .evaluations(Collections.emptyList())
             .tags(Collections.emptyList())
+            .image(false)
             .build();
 
         this.restaurantRepository.save(entity);

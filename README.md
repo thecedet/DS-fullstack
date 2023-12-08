@@ -17,3 +17,35 @@ Réponse : Même réponse que ci-dessus
 Expliquez l'implémentation que vous avez fait des tags (quelles solutions avez-vous envisagées et pourquoi avoir retenu la vôtre en particulier)
 
 J'ai utilisé un enum. Je ne voulais pas surcharger ma BDD (de requete et de text non dynamique)
+
+
+BONUS :
+
+```java
+@Component
+public class AuthorizationFilter implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        // Vous pouvez initialiser des ressources ou effectuer d'autres tâches d'initialisation ici
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        // Récupérer la valeur du champ Authorization de l'en-tête
+        String authorizationHeader = ((HttpServletRequest) request).getHeader("Authorization");
+
+        // Faire ce que vous voulez avec la valeur du champ Authorization
+        System.out.println("Authorization Header: " + authorizationHeader);
+
+        // Poursuivre la chaîne de filtres
+        chain.doFilter(request, response);
+    }
+
+    @Override
+    public void destroy() {
+        // Vous pouvez effectuer des tâches de nettoyage ici
+    }
+}
+```
