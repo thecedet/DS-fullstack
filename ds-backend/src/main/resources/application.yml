@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        url: "jdbc:postgresql://172.24.24.151:5432/ds"
+        username: "ds"
+        password: "ds"
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                '[format_sql]': yes 
+                dialect: "org.hibernate.dialect.PostgreSQLDialect"
+s3:
+    accesskey: "VuHtZ5Cl5gLInCfACP5D"
+    secretkey: "NOibQ7qdGlMyEypU286w5H3NbnIZVqWslfoh2SJe"
+    endpoint: "http://127.0.0.1:9000/"
+    bucketName:
+        cover: "exocover"
+        screenshot: "exoscreenshot"
+        acteur: "exoacteur"

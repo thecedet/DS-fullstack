@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "s3.accesskey",
+    "type": "java.lang.String",
+    "description": "A description for 's3.accesskey'"
+  },
+  {
+    "name": "s3.secretkey",
+    "type": "java.lang.String",
+    "description": "A description for 's3.secretkey'"
+  },
+  {
+    "name": "s3.endpoint",
+    "type": "java.lang.String",
+    "description": "A description for 's3.endpoint'"
+  },
+  {
+    "name": "s3.bucketName.cover",
+    "type": "java.lang.String",
+    "description": "A description for 's3.bucketName.cover'"
+  },
+  {
+    "name": "s3.bucketName.screenshot",
+    "type": "java.lang.String",
+    "description": "A description for 's3.bucketName.screenshot'"
+  },
+  {
+    "name": "s3.bucketName.acteur",
+    "type": "java.lang.String",
+    "description": "A description for 's3.bucketName.acteur'"
+  }
+]}
