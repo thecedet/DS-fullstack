@@ -27,11 +27,15 @@ public class RestaurantSummaryDto {
     @JsonProperty("note_moyenne")
     private float noteMoyenne;
 
+    @JsonProperty("etoiles")
+    private Integer etoiles;
+
     public static RestaurantSummaryDto convertEntitytoDto(RestaurantEntity entity) {
         return RestaurantSummaryDto.builder()
             .id(entity.getId())
             .nom(entity.getNom())
             .addresse(entity.getAddresse())
+            .etoiles(entity.getEvaluationFinaleEntity() != null ? entity.getEvaluationFinaleEntity().getNote() : -1)
             .noteMoyenne(CalculMoyenneEval.getMoyenne(entity.getEvaluations()))
             .build();
     }

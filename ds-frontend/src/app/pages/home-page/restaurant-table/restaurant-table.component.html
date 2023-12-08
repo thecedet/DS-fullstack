@@ -1,0 +1,17 @@
+<table id="customers">
+    <tr>
+      <th>Nom</th>
+      <th>Addresse</th>
+      <th>Note moyenne</th>
+      <th>Etoile</th>
+      <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let restaurant of restaurants" appTableSetColor="{{ restaurant.note_moyenne }}">
+        <td>{{ restaurant.nom }}</td>
+        <td>{{ restaurant.addresse }}</td>
+        <td>{{ restaurant.note_moyenne }}</td>
+        <td>{{ restaurant.id }}</td>
+        <button (click)="navigateToDetails(restaurant.id)">Details</button>
+    </tr>
+  </table>

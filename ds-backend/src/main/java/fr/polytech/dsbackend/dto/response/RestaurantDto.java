@@ -38,6 +38,9 @@ public class RestaurantDto {
     @JsonProperty("tag")
     private List<TagDto> tags;
 
+    @JsonProperty("etoiles")
+    private EtoileDto etoiles;
+
     public static RestaurantDto convertEntitytoDto(RestaurantEntity entity) {
         return RestaurantDto.builder()
             .id(entity.getId())
@@ -48,6 +51,7 @@ public class RestaurantDto {
                 .map(evaluation -> EvaluationDto.convertEntitytoDto(evaluation)).toList()
             )
             .tags(entity.getTags().stream().map(tag -> TagDto.convertEntitytoDto(tag)).toList())
+            .etoiles(entity.getEvaluationFinaleEntity() != null ? EtoileDto.convertEntitytoDto(entity.getEvaluationFinaleEntity()) : null)
             .build();
     }
 

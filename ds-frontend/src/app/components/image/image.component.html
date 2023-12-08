@@ -1,0 +1,8 @@
+<ng-container *ngIf="image; else loading">
+    <div *ngIf="image.code == 'GET_IMAGE_URL'; else test">
+        <img  [src]="image.message" alt="Place image title" (error)="onErrorImage()">
+    </div>
+    <ng-template #test> pas image</ng-template>
+</ng-container>
+<ng-template #loading>Chargement</ng-template>
+<app-input-file (uploadFile)="uploadImage.emit($event)"></app-input-file>

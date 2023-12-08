@@ -1,0 +1,36 @@
+.alert-box {    
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.alert {
+    display: flex;
+    margin: .1em;
+    border-radius: .4em;
+    min-height: 2em;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em 0 1em;
+    cursor: pointer;
+    opacity: .7;
+    color: var(--dark);
+}
+
+.alert.warning {
+    background: var(--warning);
+}
+.alert.success {
+    background: var(--success);
+}
+.alert.error {
+    background: var(--error);
+}
+
+.alert:hover {
+    transform: scale(1.02);
+    opacity: .9;
+}
