@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, mergeMap, of } from 'rxjs';
 import { IRestaurant, IRestaurantCreate, IRestaurantSummary, IRestaurantUpdate } from '../models/restaurant.models';
 import { IMessage } from '../models/message.models';
+import { ITag } from '../models/tag.models';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,12 @@ export class RestaurantService {
         return this.httpClient.put<IMessage>(response.message, file)
       }), catchError(error => of(error.error))
     );
+  }
+
+  public addTag(id: number, tags : ITag[]) : Observable<IRestaurant> {
+    let params = {tag: [] as string[]}
+    params.tag = tags.map(tag => tag.nom)
+    return this.httpClient.put<IRestaurant>(`${this.baseURL}/${id}/tags`, {}, {params})
   }
 
 }
