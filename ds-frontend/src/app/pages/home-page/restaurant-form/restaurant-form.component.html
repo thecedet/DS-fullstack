@@ -11,5 +11,15 @@
       <span style="color:#e74c3c" *ngIf="!addresse.valid && addresse.errors?.['required'] && addresse.dirty">Le champs est requis</span>
       <span style="color:#e74c3c" *ngIf="!addresse.valid && addresse.errors?.['maxlength'] && addresse.dirty">Le champs est trop long</span>
     </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Tags</mat-label>
+        <mat-select multiple (valueChange)="onChangeTag($event)">
+          @for (tag of tags; track tag) {
+            <mat-option [value]="tag">{{tag.nom}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
     <input type="submit" value="Valider" [disabled]="!(addresse.valid && nom.valid && nom.valid)" />
 </form>

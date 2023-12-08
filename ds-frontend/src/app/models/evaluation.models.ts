@@ -20,3 +20,10 @@ export interface IEvaluationCreate {
     note: number,
     date: Date
 }
+
+export interface IEtoile {
+    auteur: string,
+    note: number,
+    description: string
+
+}

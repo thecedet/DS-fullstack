@@ -1,4 +1,4 @@
-import { IEvaluation } from "./evaluation.models"
+import { IEtoile, IEvaluation } from "./evaluation.models"
 import { ITag } from "./tag.models"
 
 export interface IRestaurant {
@@ -9,7 +9,7 @@ export interface IRestaurant {
     evaluations: IEvaluation[],
     illustration?: string,
     tag: ITag[],
-    etoile?: number
+    etoile?: IEtoile
 }
 
 export interface IRestaurantSummary {
@@ -17,12 +17,13 @@ export interface IRestaurantSummary {
     nom: string,
     addresse: string,
     note_moyenne: number,
-    etoile?: number
+    etoile?: IEtoile
 }
 
 export interface IRestaurantCreate {
     nom: string,
     addresse: string
+    tags?: ITag[]
 }
 
 export interface IRestaurantUpdate {

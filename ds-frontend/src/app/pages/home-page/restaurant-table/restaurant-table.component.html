@@ -10,8 +10,8 @@
     <tr *ngFor="let restaurant of restaurants" appTableSetColor="{{ restaurant.note_moyenne }}">
         <td>{{ restaurant.nom }}</td>
         <td>{{ restaurant.addresse }}</td>
-        <td>{{ restaurant.note_moyenne }}</td>
-        <td>{{ restaurant.id }}</td>
+        <td>{{ restaurant.note_moyenne == -1 ? "/" : restaurant.note_moyenne}}</td>
+        <td>{{ restaurant.etoile?.note }}</td>
         <button (click)="navigateToDetails(restaurant.id)">Details</button>
     </tr>
   </table>

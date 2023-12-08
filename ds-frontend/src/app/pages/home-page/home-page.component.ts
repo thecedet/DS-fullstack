@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { RestaurantTableComponent } from "./restaurant-table/restaurant-table.component";
 import { RestaurantFormComponent } from "./restaurant-form/restaurant-form.component";
-import { IRestaurantCreate, IRestaurantSummary } from '../../models/restaurant.models';
+import { IRestaurantCreate, IRestaurantSummary, IRestaurant } from '../../models/restaurant.models';
 import { RestaurantService } from '../../services/restaurant.service';
 import { NotificationService } from '../../services/notification.service';
+import { ITag } from '../../models/tag.models';
+import { TagService } from '../../services/tag.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-home-page',
@@ -19,13 +22,21 @@ export class HomePageComponent {
         addresse: "",
         nom: ""
     }
+    public tags ?: ITag[];
 
     constructor(
         private readonly restaurantService : RestaurantService,
-        private readonly ntfService : NotificationService
+        private readonly ntfService : NotificationService,
+        private readonly tagService : TagService
     ) {}
 
     ngOnInit() : void {
+        this.tagService.getTags().subscribe({
+            next: tags => {
+                this.tags = tags;
+            },
+            error: () => this.ntfService.error("Impossible de récupérer les tags")
+        })
         this.restaurantService.getRestaurants().subscribe({
             next: restaurants => {
                 this.restaurants = restaurants;
@@ -37,12 +48,19 @@ export class HomePageComponent {
     public create(restaurant: IRestaurantCreate) : void {
         this.restaurantService.createRestaurant(restaurant).subscribe({
          next: value => {
-             this.restaurants.push(value);
-             this.ntfService.success("Création du restaurant avec succès")
+            if(restaurant.tags) {
+                this.restaurantService.addTag(value.id, restaurant.tags).subscribe({
+
+                })
+            }
+            this.restaurants.push(value);
+            this.ntfService.success("Création du restaurant avec succès")
          },
          error: () => this.ntfService.error("Création du restaurant avec erreur")
         })
-     }
+    }
+
+    
 
 
 }
